@@ -1,0 +1,60 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box">
+    <% for (let i=0; i<newListItems.length; i++) { %>
+      <div class="item">
+        <input type="checkbox" value=<%=newListItems[i]._id%>>
+        <p><%=  newListItems[i].name  %></p>
+      </div>
+      <% } %>
+
+      <div class="item formStyle">
+        <form>
+          <button class="main" id="trash" type="submit" value='<%= listTitle%>' name="btnTrash">🗑</button>
+        </form>
+        <form action="/list/saveItem" method="post">
+          <input class="inputItem" type="text" name="newItem" placeholder="New Item" autofocus autocomplete="off">
+          <button class="main" type="submit" value='<%= listTitle%>' name="btnValue">+</button>
+        </form>
+      </div>
+  </div>
+
+<!-- Open Modal -->
+<button class="newListButton" type="button" data-toggle="modal" data-target="#listModal">Other List</button>
+
+<!-- Modal Bootstrap -->
+<div class="modal fade" id="listModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- New List Button -->
+        <form method="post" action="/list/addList">
+          <input type="text" name="newList" placeholder="New List">
+          <button class="addListButton" type="submit">Create New</button>
+        </form>
+        <!-- New List Dropdown -->
+        <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select List</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="/list/home">Home List</a>
+            <a class="dropdown-item" href="/list/work">Work List</a>
+            <a class="dropdown-item" href="/list/trent">Trent List</a>
+            <a class="dropdown-item" href="/list/teddy">Teddy List</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("footer") -%>
