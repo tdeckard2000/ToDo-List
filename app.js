@@ -42,14 +42,14 @@ const otherList = mongoose.model('otherList', listSchema);
 function getLists(){otherList.find().distinct('listName',(err, doc)=>{
   if(err){
     console.log('Error at getLists()');
-    console.log(err); 
+    console.log(err);
   }
     listOfAllLists = doc;
   });
 }
 
 // Get All List Names at Start
-getLists();
+getLists('/');
 
 // Get Requests
 app.get("/", (req, res)=>{
@@ -83,7 +83,7 @@ app.get("/list/about", function (req, res) {
 });
 
 app.get("/list/*", (req, res)=>{ // Catch all other Gets
-  console.log("STEP TWO");
+  getLists();
   let requestURL = (req.originalUrl);
   requestURL = requestURL.slice(6); // Remove '/list' from url.
   requestURL = requestURL.split('?btnTrash=')[0]; // Remove query from url '?something=something'.
@@ -141,7 +141,6 @@ app.post("/list/addList", (req, res)=>{
   const newList = (req.body.newList).toLowerCase();
   console.log('/addList: ' + newList);
   otherList.create({listName: newList, name:'#ListName#'})
-
   res.redirect('/list/'+newList);
 });
 

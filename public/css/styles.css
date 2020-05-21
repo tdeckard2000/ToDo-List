@@ -73,9 +73,8 @@ button.main {
 .dropdown-menu{
   max-height: 300px;
   max-width: 255px;
-  overflow: scroll;
-  position: relative;
-  right: 50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .inputItem{
