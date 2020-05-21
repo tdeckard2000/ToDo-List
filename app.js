@@ -92,7 +92,7 @@ app.get("/list/*", (req, res)=>{ // Catch all other Gets
   let requestURL = (req.originalUrl);
   requestURL = requestURL.slice(6); // Remove '/list' from url.
   console.log(requestURL);
-  requestURL = requestURL.split('?')[0]; // Remove query from url '?something=something'.
+  requestURL = requestURL.split('?btnTrash=')[0]; // Remove query from url '?something=something'.
   requestURL= requestURL.replace(/%20/g, ' '); // Replace %20 with a space.
 
   otherList.find({listName: requestURL}, (err, doc)=>{
