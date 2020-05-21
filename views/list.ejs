@@ -48,8 +48,10 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="/list/home">Home List</a>
             <a class="dropdown-item" href="/list/work">Work List</a>
-            <a class="dropdown-item" href="/list/trent">Trent List</a>
-            <a class="dropdown-item" href="/list/teddy">Teddy List</a>
+            <%listOfAllLists.forEach(element => {%>
+              <a class="dropdown-item" href="/list/<%=element%>"><%=element%></a>
+            <%});%>
+
           </div>
         </div>
       </div>

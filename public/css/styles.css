@@ -70,6 +70,13 @@ button.main {
   border-width: 0;
 }
 
+.dropdown-menu{
+  max-height: 300px;
+  overflow: scroll;
+  position: relative;
+  right: 50px;
+}
+
 .inputItem{
   text-align: center;
   height: 60px;

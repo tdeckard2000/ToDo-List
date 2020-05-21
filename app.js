@@ -39,22 +39,17 @@ const workItem = mongoose.model('workItem', itemsSchema);
 const otherList = mongoose.model('otherList', listSchema);
 
 // Mongoose - Get All List Names
-// function getLists(){otherList.find().distinct('listName',(err, doc)=>{
-//     console.log('error: '+err);
-//     listOfAllLists = doc;
-//     listOfAllLists.forEach(element => {
-//       console.log(element)
-//       app.get('/'+element,(req, res)=>{
-//         console.log(element);
-//         res.render("list", {listTitle: element, newListItems: ['example', 'items']} );
-//       });
-//       return('done');
-//     });
-//   });
-// } 
+function getLists(){otherList.find().distinct('listName',(err, doc)=>{
+  if(err){
+    console.log('Error at getLists()');
+    console.log(err); 
+  }
+    listOfAllLists = doc;
+  });
+}
 
-// Create Dynamic Routes
-// getLists();
+// Get All List Names at Start
+getLists();
 
 // Get Requests
 app.get("/", (req, res)=>{
@@ -69,7 +64,7 @@ app.get("/list/home", (req, res)=>{
   let homeItems = [];
   homeItem.find({}, (err, docs) => {
     homeItems = docs;
-    res.render("list", {listTitle: "Home List", newListItems: homeItems});
+    res.render("list", {listTitle: "Home List", newListItems: homeItems, listOfAllLists: listOfAllLists});
     })
   });
     
@@ -78,7 +73,7 @@ app.get("/list/work", (req, res)=>{
   let workItems = [];
   workItem.find({}, (err, docs)=>{
     workItems = docs;
-    res.render("list", {listTitle: "Work List", newListItems: workItems});
+    res.render("list", {listTitle: "Work List", newListItems: workItems, listOfAllLists: listOfAllLists});
     });
     
   });
@@ -91,7 +86,6 @@ app.get("/list/*", (req, res)=>{ // Catch all other Gets
   console.log("STEP TWO");
   let requestURL = (req.originalUrl);
   requestURL = requestURL.slice(6); // Remove '/list' from url.
-  console.log(requestURL);
   requestURL = requestURL.split('?btnTrash=')[0]; // Remove query from url '?something=something'.
   requestURL= requestURL.replace(/%20/g, ' '); // Replace %20 with a space.
 
@@ -106,7 +100,7 @@ app.get("/list/*", (req, res)=>{ // Catch all other Gets
     }
 
     newListItems = doc.slice(1); // Remove the first item '#ListName#'
-    res.render('list', {listTitle: requestURL, newListItems: newListItems});
+    res.render('list', {listTitle: requestURL, newListItems: newListItems, listOfAllLists: listOfAllLists});
   });
 });
 
@@ -147,6 +141,7 @@ app.post("/list/addList", (req, res)=>{
   const newList = (req.body.newList).toLowerCase();
   console.log('/addList: ' + newList);
   otherList.create({listName: newList, name:'#ListName#'})
+
   res.redirect('/list/'+newList);
 });
 
