@@ -16,6 +16,7 @@
     "underscore": "^1.10.2"
   },
   "scripts": {
+    "start": "mongod",
     "start": "node app.js"
   }
 }
