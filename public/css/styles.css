@@ -155,21 +155,20 @@ body.noBootstrap{
   }
 
   button.main{
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     font-size: 4rem;
   }
 
   .inputItem{
-    font-size: 4rem,
-    width
+    font-size:2rem
   }
 
   .box h1{
     font-size: 3rem;
   }
 
-  p{
+  .item p{
     font-weight: 400;
     font-size: 1.5rem;
     margin-bottom: 0;
