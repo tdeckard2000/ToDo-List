@@ -157,11 +157,12 @@ body.noBootstrap{
   button.main{
     width: 60px;
     height: 60px;
-    font-size: 4rem;
+    font-size: 2rem;
   }
 
   .inputItem{
-    font-size:2rem
+    font-size:2rem;
+    width: 60%;
   }
 
   .box h1{
