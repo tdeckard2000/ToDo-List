@@ -159,6 +159,11 @@ body.noBootstrap{
     width: 60px;
     height: 60px;
     font-size: 2rem;
+    padding: 0;
+  }
+
+  button.newListButton{
+    margin-bottom: 50px;
   }
 
   .inputItem{
