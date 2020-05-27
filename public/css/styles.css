@@ -150,7 +150,27 @@ body.noBootstrap{
 
 /* Mobile Responsive */
 @media (max-width: 500px){
-  .item{
-    width: 100%;
+  .box{
+    max-width: 90%;
+  }
+
+  button.main{
+    width: 100px;
+    height: 100px;
+    font-size: 4rem;
+  }
+
+  .inputItem{
+    font-size: 4rem,
+    width
+  }
+
+  h1{
+    font-size: 5rem;
+  }
+
+  p{
+    font-weight: 400;
+    font-size: 4rem;
   }
 }
