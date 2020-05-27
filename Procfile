@@ -1,2 +1,1 @@
-Web: mongod
-Web: node app.js
+Web: npm start
