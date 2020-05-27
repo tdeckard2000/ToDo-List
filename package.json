@@ -4,19 +4,16 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "dotenv": "^8.2.0",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
     "mongoose": "^5.9.11",
     "underscore": "^1.10.2"
-  },
-  "scripts": {
-    "start": "mongod",
-    "start": "node app.js"
   }
 }

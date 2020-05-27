@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const date = require(__dirname + '/date.js');
 const _ = require('underscore');
+require('dotenv').config()
 
 const app = express();
 
@@ -14,11 +15,14 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-// Mongoose and MongoDB Setup
-mongoose.connect("mongodb://localhost:27017/TodoDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+// Connect Mongoose to DB (local)
+// mongoose.connect("mongodb://localhost:27017/TodoDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+
+// Connect Mongoose to DB (MLab)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/advanced-todo-list');
 
 // Mongoose Schemas
 const itemsSchema = new mongoose.Schema({
