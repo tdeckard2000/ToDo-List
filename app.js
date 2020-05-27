@@ -179,3 +179,9 @@ if (port == null || port == "") {
   port = 3000;
 }
 app.listen(port);
+
+// NOTES
+// Hosted on Heroku
+// Database is running on mLab - Free Sandbox Version
+// MONGODB_URI variable is replaced on Heroku under Settings for security
+// Version control is using Github and is connected to Heroku

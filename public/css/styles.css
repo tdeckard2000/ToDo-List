@@ -147,3 +147,10 @@ body.noBootstrap{
 .modal-dialog{
   top: 250px;
 }
+
+/* Mobile Responsive */
+@media (max-width: 500px){
+  .item{
+    width: 100%;
+  }
+}
