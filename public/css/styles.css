@@ -155,6 +155,11 @@ body.noBootstrap{
     max-width: 90%;
   }
 
+  button.add{
+    position: absolute;
+    right: 2px;
+  }
+
   button.main{
     width: 60px;
     height: 60px;
@@ -185,6 +190,10 @@ body.noBootstrap{
 
   .modal-dialog{
     top: 195px;
+  }
+
+  .formStyle{
+    position: relative;
   }
 
 }
