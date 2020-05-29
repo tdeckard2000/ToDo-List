@@ -1,4 +1,6 @@
-#Ignore These Files
+# Ignore These Files
+# The .env file replaces the .env variable in app.js. It's used for local app testing.
 
 .DS_Store
 node_modules/
+.env

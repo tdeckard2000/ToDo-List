@@ -89,11 +89,9 @@ app.get("/list/about", function (req, res) {
 app.get("/list/*", (req, res)=>{ // Catch all other Gets
   getLists();
   let requestURL = (req.originalUrl);
-  console.log("before conversion: " + requestURL);
   requestURL = requestURL.slice(6); // Remove '/list' from url.
   requestURL = requestURL.split('?btnTrash=')[0]; // Remove query from url '?something=something'.
   requestURL = decodeURI(requestURL); // Convert percentage encoding (URI) to plain text.
-  console.log("after conversion uri: " + requestURL);
 
   otherList.find({listName: requestURL}, (err, doc)=>{
     if(err){
@@ -102,7 +100,6 @@ app.get("/list/*", (req, res)=>{ // Catch all other Gets
     }
 
     if(!doc.length){ // Check if mongoose returned any results.
-      console.log(requestURL);
       res.send("Oops. That list doesn't exist yet. <a href='../'>Go back and create it!</a>")
     }
 
