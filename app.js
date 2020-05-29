@@ -49,6 +49,8 @@ function getLists(){otherList.find().distinct('listName',(err, doc)=>{
     console.log(err);
   }
     listOfAllLists = doc;
+    listOfAllLists = listOfAllLists.sort() // Sort list names alphabetically.
+    console.log(listOfAllLists);
   });
 }
 
