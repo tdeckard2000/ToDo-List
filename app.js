@@ -21,8 +21,8 @@ app.use(express.static("public"));
 //   useUnifiedTopology: true
 // });
 
-// Connect Mongoose to DB (MLab)
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/advanced-todo-list');
+// Connect Mongoose to DB (MLab) - Brackets are depreciation options.
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/advanced-todo-list', {useNewUrlParser: true, useUnifiedTopology: true });
 
 // Mongoose Schemas
 const itemsSchema = new mongoose.Schema({
@@ -89,9 +89,11 @@ app.get("/list/about", function (req, res) {
 app.get("/list/*", (req, res)=>{ // Catch all other Gets
   getLists();
   let requestURL = (req.originalUrl);
+  console.log("before conversion: " + requestURL);
   requestURL = requestURL.slice(6); // Remove '/list' from url.
   requestURL = requestURL.split('?btnTrash=')[0]; // Remove query from url '?something=something'.
-  requestURL= requestURL.replace(/%20/g, ' '); // Replace %20 with a space.
+  requestURL = decodeURI(requestURL); // Convert percentage encoding (URI) to plain text.
+  console.log("after conversion uri: " + requestURL);
 
   otherList.find({listName: requestURL}, (err, doc)=>{
     if(err){
@@ -100,6 +102,7 @@ app.get("/list/*", (req, res)=>{ // Catch all other Gets
     }
 
     if(!doc.length){ // Check if mongoose returned any results.
+      console.log(requestURL);
       res.send("Oops. That list doesn't exist yet. <a href='../'>Go back and create it!</a>")
     }
 
@@ -177,6 +180,7 @@ app.delete('/list/deleteitem', function(req, res){
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
+  console.log("Running on Local Host 3000")
 }
 app.listen(port);
 
