@@ -178,8 +178,11 @@ let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
   console.log("Running on Local Host 3000")
+}else{
+  app.listen(port);
+  console.log("Local Host 5000");
 }
-app.listen(port);
+
 
 // NOTES
 // Hosted on Heroku
