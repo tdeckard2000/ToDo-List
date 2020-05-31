@@ -178,9 +178,9 @@ app.delete('/list/deleteitem', function(req, res){
 // Allow Heroku to Listen for Correct Port
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 8080;
+  port = 3000;
   app.listen(port)
-  console.log("Running on Local Host 8080")
+  console.log("Running on Local Host 3000")
 }else{
   app.listen(port);
   console.log("Local Host 5000");
