@@ -22,7 +22,7 @@ app.use(express.static("public"));
 // });
 
 // Connect Mongoose to DB (MLab) - Brackets are depreciation options.
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/advanced-todo-list', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/advanced-todo-list', {useNewUrlParser: true, useUnifiedTopology: true });
 
 // Mongoose Schemas
 const itemsSchema = new mongoose.Schema({
@@ -190,5 +190,5 @@ if (port == null || port == "") {
 // NOTES
 // Hosted on Heroku
 // Database is running on mLab - Free Sandbox Version
-// MONGODB_URI variable is replaced on Heroku under Settings for security
+// MONGO_URI variable is replaced on Heroku under Settings for security
 // Version control is using Github and is connected to Heroku
